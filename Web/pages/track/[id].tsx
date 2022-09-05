@@ -38,7 +38,7 @@
 
 // export default track;
 import { GraphQLClient, gql } from "graphql-request";
-import { GET_TRACK } from "../constants";
+import { GET_TRACK, INCREMENT_TRACK_VIEWS } from "../constants";
 import { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import {
   Box,
@@ -50,13 +50,21 @@ import {
   Text,
 } from "@chakra-ui/react";
 import { Image } from "@chakra-ui/react";
+import { useMutation } from "@apollo/client";
+import { useEffect } from "react";
+import _ from "lodash";
+// import { useEffect } from "react";
 
-
-
-const home = ({
+const Home = ({
   data,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
-  //console.log({ data });
+  const [incrementView] = useMutation(INCREMENT_TRACK_VIEWS, {
+    variables: { incrementTrackViewsId: data.track.id },
+  });
+
+  useEffect(() => {
+    incrementView();
+  }, []);
 
   return (
     <Container>
@@ -117,8 +125,7 @@ const home = ({
 };
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
-  console.log(params.id);
-  const id = params.id;
+  const id = params?.id;
 
   const endpoint = "http://localhost:4000/graphql";
 
@@ -128,4 +135,5 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   //console.log(JSON.stringify(data, undefined, 2));
   return { props: { data } };
 };
-export default home;
+
+export default Home;
