@@ -7,7 +7,7 @@ type Track {
   title: String!
   author: Author!
   thumbnail: String
-  length: Int
+  lengths: Int
   modulesCount: Int
 description: String
 numberOfViews: Int
