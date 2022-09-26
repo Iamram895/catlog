@@ -4,8 +4,7 @@ import { getQuery } from "./constants";
 import { Box, Container, Flex, HStack, Text } from "@chakra-ui/react";
 import Link from "next/link";
 import { Image } from "@chakra-ui/react";
-import { INCREMENT_TRACK_VIEWS } from "./constants";
-import { useMutation } from "@apollo/client";
+
 
 const Home: NextPage = ({
   result,
