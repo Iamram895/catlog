@@ -4,7 +4,7 @@ const typeDefs = gql`
 
 type Track {
   id: ID!
-  title: String!
+  titles: String!
   author: Author!
   thumbnail: String
   lengths: Int
