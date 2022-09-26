@@ -16,7 +16,7 @@ modules: [Module!]!
 
 type Author {
   id: ID!
-  name: String!
+  names: String!
   photo: String
 }
 
