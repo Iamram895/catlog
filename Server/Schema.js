@@ -10,7 +10,7 @@ type Track {
   lengths: Int
   modulesCount: Int
 description: String
-numberOfViews: Int
+numberOfView: Int
 modules: [Module!]!
 }
 
